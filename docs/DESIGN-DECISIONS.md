@@ -1,5 +1,7 @@
 # koetype 設計判断ログ
 
+**日本語** | [English](DESIGN-DECISIONS.en.md)
+
 > 形式: 何を決めたか / なぜ / 検討した代替案 / 受け入れたトレードオフ。
 > 後続セッションがこのログだけで「なぜこうなっているか」を追えることが目標。
 
@@ -53,7 +55,8 @@
 - **なぜ**: androidx.security-crypto は deprecated 方向で、鍵ストア絡みの
   デバイス依存クラッシュの温床。アプリ専用領域は非 root 端末では他アプリから読めない。
 - **代替案**: EncryptedSharedPreferences（deprecated リスク）、Keystore 自前実装（過剰）。
-- **トレードオフ**: root 化端末・adb backup 経路では平文が読める。個人利用の
+- **トレードオフ**: root 化端末や、debug ビルドへの adb run-as 経路では平文が
+  読める（adb backup 経路は allowBackup="false" で塞いでいる — THREAT-MODEL 参照）。個人利用の
   自分キー方式では許容。ログ・例外メッセージにキーを出さない規約で補強（CLAUDE.md）。
 
 ## DD-006: ツールチェーンはローカルキャッシュに合わせる — 2026-07-08
@@ -170,7 +173,8 @@
 
 ## DD-013: Google Play 非登録でも SDK 追随は続ける（期限付き義務ではなく保守衛生として） — 2026-07-22
 
-- **決定**: Google Play には登録しない（配布は GitHub Releases の APK のみ）が、
+- **決定**: Google Play には登録しない（ストア配布もバイナリ配布もしない。
+  導入は各自ビルドのみ — GETTING-STARTED / SIGNING.md と同一方針）が、
   compileSdk / targetSdk とツールチェーン（Gradle / AGP / Kotlin）の追随は
   継続する。次にビルド構成へ手を入れるタイミングで compileSdk/targetSdk 36 +
   AGP + Gradle + Kotlin を一括更新し（DD-006 の「全部同時に」原則）、API 36
