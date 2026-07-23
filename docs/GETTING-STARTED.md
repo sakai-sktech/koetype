@@ -1,5 +1,7 @@
 # GETTING STARTED — ビルドから初回入力まで
 
+**日本語** | [English](GETTING-STARTED.en.md)
+
 koetype はストア配布もバイナリ配布もしない。**自分でビルドして入れる**のが
 正規の導入経路である（理由は README の思想節と THREAT-MODEL.md）。
 

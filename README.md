@@ -1,11 +1,6 @@
 # koetype — 声で打つ Android キーボード
 
-> **EN TL;DR** — koetype is a voice-input Android IME (keyboard): tap the mic,
-> speak, tap again, and the transcription is committed into whatever field you
-> were typing in. Buffered recording → OpenAI transcription API → `commitText`.
-> **Bring your own OpenAI API key.** No server, no telemetry, no bundled key,
-> no Play Store. Docs are in Japanese; the code is small (7 Kotlin files) and
-> speaks for itself. MIT.
+**日本語** | [English](README.en.md)
 
 音声入力特化のカスタム Android IME。マイクボタンを押して話し、停止すると
 音声バッファを STT（音声認識）API に送り、結果のテキストを現在の入力欄に挿入する。

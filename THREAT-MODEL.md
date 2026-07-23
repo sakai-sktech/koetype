@@ -1,5 +1,7 @@
 # koetype 脅威モデル — 何から守り、何は守らないか
 
+**日本語** | [English](THREAT-MODEL.en.md)
+
 koetype の API キーは端末内に**平文で**保存される（詳細は
 [docs/KEY-STORAGE-SECURITY.md](docs/KEY-STORAGE-SECURITY.md)）。
 これは手抜きではなく設計判断（DD-005）だが、その判断が成立するのは
