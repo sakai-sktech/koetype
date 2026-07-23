@@ -60,6 +60,9 @@ are language-neutral and normally need no translation.
 | `pref_model_label` | Transcription model | 転写モデル |
 | `pref_language_label` | Language hint (blank = auto-detect) | 言語ヒント（空欄=自動判定） |
 | `pref_language_hint` | e.g. ja, en (ISO-639-1) | 例: ja, en（ISO-639-1） |
+| `model_mini_label` | gpt-4o-mini-transcribe (fast & cheap) | gpt-4o-mini-transcribe（速い・安い） |
+| `model_4o_label` | gpt-4o-transcribe (high accuracy) | gpt-4o-transcribe（高精度） |
+| `model_whisper_label` | whisper-1 (proven) | whisper-1（実績重視） |
 | `btn_save` | Save | 保存 |
 | `btn_enable_ime` | 1. Enable the keyboard (system settings) | 1. キーボードを有効化（システム設定） |
 | `btn_pick_ime` | 2. Switch keyboard | 2. キーボードを切り替える |
@@ -67,6 +70,19 @@ are language-neutral and normally need no translation.
 | `mic_granted` | Microphone permission: granted ✓ | マイク権限: 許可済み ✓ |
 | `saved_toast` | Saved | 保存しました |
 | `error_api_key_chars` | Invalid characters remain in the API key (full-width, etc.). Paste it again | APIキーに使えない文字が残っています（全角文字など）。貼り付けし直してください |
+
+### Not in resources / リソース外の文字列
+
+`SttEngine` implementations return failure messages as plain English strings in
+code (e.g. "API key not set", "connection failed") — the engine layer has no
+Android `Context`, and the contract only requires a short display-safe message.
+They surface through `status_error_network`. If you localize the app, treat the
+engine you use (or replace) as part of the translation surface.
+
+`SttEngine` 実装の失敗メッセージ（例: "API key not set"）はリソースではなく
+コード内の英語文字列。エンジン層は `Context` を持たず、契約上は「状態表示に
+そのまま出せる短文」であればよい。ローカライズする場合はエンジン側も翻訳対象に
+含めること。
 
 ## Style rules / 表記ルール
 

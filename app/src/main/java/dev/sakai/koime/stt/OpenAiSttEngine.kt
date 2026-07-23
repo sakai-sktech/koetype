@@ -29,13 +29,13 @@ class OpenAiSttEngine(private val apiKeyProvider: () -> String) : SttEngine {
         withContext(Dispatchers.IO) {
             val apiKey = apiKeyProvider()
             if (apiKey.isEmpty()) {
-                return@withContext Result.failure(IllegalStateException("APIキー未設定"))
+                return@withContext Result.failure(IllegalStateException("API key not set"))
             }
             // HTTP ヘッダに載らない文字が混ざっていると OkHttp が即 throw する
             // （実機で全角文字混入によるプロセス死を確認 — DD-009）。先に弾いて短文で返す。
             if (apiKey.any { it.code !in 0x21..0x7E }) {
                 return@withContext Result.failure(
-                    IllegalArgumentException("APIキーに不正な文字（全角など）— 設定で入れ直してください")
+                    IllegalArgumentException("Invalid characters in API key — re-enter it in Settings")
                 )
             }
 
@@ -77,7 +77,7 @@ class OpenAiSttEngine(private val apiKeyProvider: () -> String) : SttEngine {
             } catch (e: CancellationException) {
                 throw e
             } catch (e: IOException) {
-                Result.failure(IOException(e.message ?: "接続失敗"))
+                Result.failure(IOException(e.message ?: "connection failed"))
             } catch (e: Throwable) {
                 Log.e("koime", "transcribe failed: ${e.javaClass.simpleName}", e)
                 Result.failure(IOException("${e.javaClass.simpleName}: ${e.message ?: "?"}"))

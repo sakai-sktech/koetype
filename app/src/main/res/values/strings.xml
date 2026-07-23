@@ -32,6 +32,9 @@
     <string name="pref_model_label">Transcription model</string>
     <string name="pref_language_label">Language hint (blank = auto-detect)</string>
     <string name="pref_language_hint">e.g. ja, en (ISO-639-1)</string>
+    <string name="model_mini_label">gpt-4o-mini-transcribe (fast &amp; cheap)</string>
+    <string name="model_4o_label">gpt-4o-transcribe (high accuracy)</string>
+    <string name="model_whisper_label">whisper-1 (proven)</string>
     <string name="btn_save">Save</string>
     <string name="btn_enable_ime">1. Enable the keyboard (system settings)</string>
     <string name="btn_pick_ime">2. Switch keyboard</string>

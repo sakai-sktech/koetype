@@ -40,19 +40,19 @@
                 android:id="@+id/modelMiniTranscribe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="gpt-4o-mini-transcribe（速い・安い）" />
+                android:text="@string/model_mini_label" />
 
             <RadioButton
                 android:id="@+id/model4oTranscribe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="gpt-4o-transcribe（高精度）" />
+                android:text="@string/model_4o_label" />
 
             <RadioButton
                 android:id="@+id/modelWhisper1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="whisper-1（実績重視）" />
+                android:text="@string/model_whisper_label" />
         </RadioGroup>
 
         <TextView

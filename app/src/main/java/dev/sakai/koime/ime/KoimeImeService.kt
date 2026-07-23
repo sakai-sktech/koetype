@@ -58,7 +58,7 @@ class KoimeImeService : InputMethodService() {
     private var micButton: Button? = null
     private var transcribing = false
 
-    // 「全消し」の対象 = 最後に commitText した転写。取り消し済み・入力欄切替で null に戻す
+    // UNDO の対象 = 最後に commitText した転写。取り消し済み・入力欄切替で null に戻す
     private var lastCommit: String? = null
 
     override fun onCreate() {
@@ -173,7 +173,7 @@ class KoimeImeService : InputMethodService() {
     }
 
     /**
-     * 「全消し」キー: 直前の転写を丸ごと取り消す。カーソル移動や手編集の後は
+     * UNDO キー: 直前の転写を丸ごと取り消す。カーソル移動や手編集の後は
      * 削除範囲がズレるので、カーソル直前のテキストが転写と一致する場合だけ消す。
      */
     private fun undoLastCommit() {
